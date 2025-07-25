@@ -1,0 +1,186 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme transition */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Light Mode (Reverse of Dark Mode) */
+    --navbar-bg: 0 0% 0%; /* Black */
+    --navbar-text: 0 0% 100%; /* White */
+    --home-bg: 0 0% 100%; /* White */
+    --home-text: 0 0% 0%; /* Black */
+    --section-bg: 0 0% 100%; /* White */
+    --section-text: 0 0% 0%; /* Black */
+    --card-bg: 30 50% 40%; /* Brown */
+    --card-text: 0 0% 100%; /* White */
+    --button-bg: 282 60% 85%; /* #D6b4fC */
+    --button-text: 30 50% 40%; /* Brown */
+    --skills-card-bg: 0 0% 20%; /* Dark gray */
+    --general-card-bg: 0 0% 20%; /* Dark gray */
+    
+    /* Shadcn Variables */
+    --background: var(--home-bg);
+    --foreground: var(--home-text);
+
+    --card: var(--card-bg);
+    --card-foreground: var(--card-text);
+
+    --popover: var(--card-bg);
+    --popover-foreground: var(--card-text);
+
+    --primary: 282 60% 85%; /* Purple buttons */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: var(--general-card-bg);
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: var(--general-card-bg);
+    --muted-foreground: 0 0% 100%;
+
+    --accent: var(--general-card-bg);
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 80%;
+    --input: 0 0% 80%;
+    --ring: 282 60% 85%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: var(--card-bg);
+    --sidebar-foreground: var(--card-text);
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: var(--general-card-bg);
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+  }
+
+  .dark {
+    /* Dark Mode - Custom Color Scheme */
+    --navbar-bg: 282 60% 85%; /* #D6b4fC */
+    --navbar-text: 0 0% 0%; /* Black */
+    --home-bg: 0 0% 0%; /* Black */
+    --home-text: 0 0% 100%; /* White */
+    --section-bg: 0 0% 0%; /* Black */
+    --section-text: 0 0% 100%; /* White */
+    --card-bg: 30 50% 40%; /* Brown */
+    --card-text: 0 0% 100%; /* White */
+    --button-bg: 282 60% 85%; /* #D6b4fC */
+    --button-text: 30 50% 40%; /* Brown for home buttons */
+    --skills-card-bg: 0 0% 85%; /* Light gray */
+    --general-card-bg: 0 0% 85%; /* Light gray */
+    
+    /* Shadcn Variables */
+    --background: var(--home-bg);
+    --foreground: var(--home-text);
+
+    --card: var(--general-card-bg);
+    --card-foreground: 0 0% 0%;
+
+    --popover: var(--general-card-bg);
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 282 60% 85%; /* Purple buttons */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: var(--general-card-bg);
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: var(--general-card-bg);
+    --muted-foreground: 0 0% 0%;
+
+    --accent: var(--general-card-bg);
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 50%;
+    --input: 0 0% 50%;
+    --ring: 282 60% 85%;
+
+    --sidebar-background: var(--general-card-bg);
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: var(--general-card-bg);
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations and styles for the portfolio */
+html {
+  scroll-behavior: smooth;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Smooth scrolling for all browsers */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Enhanced hover effects */
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Custom animations for typing effect */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-cursor {
+  animation: blink 1s infinite;
+}
